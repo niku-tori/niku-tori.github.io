@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- body フォント: Noto Serif -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+  <!-- h1フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libertinus+Math&display=swap" rel="stylesheet">
+  <title>大原ホームサロン</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 基本的なリセット */
+    body {
+      margin: 0;
+      font-family: 'Noto Serif';
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #1480ae;
+      font-family: "Libertinus Math", system-ui;
+      margin: 24px 0rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        text-align: left;
+        margin: 1rem 0rem;
+        font-size: 2.0rem;
+      }
+    }
+
+    
+
+    /* ヘッダー全体のスタイル */
+    header {
+      padding-top: 10px;
+      z-index: 2;
+      position: fixed;
+      width: 100%;
+      /*background-color: transparent; /* 背景色 */
+      /*background: linear-gradient(to top, 
+        rgba(224,214,165, 1),
+        rgb(228, 227, 227),
+        rgba(45 ,153,175, 1),
+        rgba(156,210,239, 1),
+        rgba(110,193,227, 1)
+      );*/
+      /*background-image: conic-gradient(from 323deg at 12% 39%, rgba(110, 193, 227, 1) 105deg, rgba(156, 210, 239, 1) 109deg, rgba(45, 153, 175, 1) 134deg, rgba(252, 252, 252, 1) 136deg, rgba(224, 214, 165, 1) 140deg);*/
+      /*background-color: #f9f9f9;*/
+
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 10' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='gradYellow' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(110,193,227)'/%3E%3Cstop offset='100%25' stop-color='rgb(124,213,248)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradBlack' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(156,210,239)'/%3E%3Cstop offset='100%25' stop-color='rgb(124,213,248)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradBlue' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(60,182,206)'/%3E%3Cstop offset='100%25' stop-color='rgb(45,153,175)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradGreen' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(228,227,227)'/%3E%3Cstop offset='100%25' stop-color='rgb(224,214,165)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradRed' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(197,188,146)'/%3E%3Cstop offset='100%25' stop-color='rgb(224,214,165)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M65,0 S70,4 100,4 L100,0 L0,0 Z' fill='url(%23gradYellow)'/%3E%3Cpath d='M60,0 L65,0 S75,4 100,3 L100,10 L0,10 L0,0 Z' fill='url(%23gradBlack)'/%3E%3Cpath d='M13,0 L60,0 S75,4 100,4 L100,10 L10,10 L10,0 Z' fill='url(%23gradBlue)'/%3E%3Cpath d='M10,0 L13,0 S35,10 100,10 L10,10 L10,0 Z' fill='url(%23gradGreen)'/%3E%3Cpath d='M0,0 L10,0 S20,10 100,10 L0,10 L0,0 Z' fill='url(%23gradRed)'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+
+      display: flex; /* Flexboxを使って要素を横並びにする */
+      justify-content: space-between; /* 両端に要素を配置 */
+      align-items: center; /* 垂直方向の中央揃え */
+      /*border-bottom: 1px solid #eee; /* 下線 */
+      font-family: "Libertinus Math",;
+    }
+
+    /* 左側のアイコン（ロゴ） */
+    .header-left img {
+      margin-left: 15px;
+      height: 60px; /* アイコンの高さ */
+      vertical-align: middle; /* 垂直方向の中央揃え */
+    }
+
+    .header-left {
+      z-index: 3;
+    }
+
+    /* 右側のナビゲーションとSNSリンク */
+    .header-right {
+      display: flex; /* Flexboxを使って要素を横並びにする */
+      padding: 15px 20px; /* 上下の余白と左右のパディング */
+      align-items: center; /* 垂直方向の中央揃え */
+    }
+
+    .header-right nav ul {
+      list-style: none; /* リストのマーカーをなくす */
+      padding: 0;
+      margin: 0;
+      display: flex; /* リストアイテムを横並びにする */
+      text-align: center;
+    }
+
+    .header-right nav ul li {
+      margin-right: 30px; /* メニュー項目間の余白 */
+    }
+
+    .header-right nav ul li a {
+      text-decoration: none; /* 下線をなくす */
+      color: #333; /* 文字色 */
+      font-weight: bold;
+      font-size: 1.5rem;
+      transition: color 0.3s ease; /* ホバー時のアニメーション */
+    }
+
+    .header-right nav ul li a:hover {
+      color: #007bff; /* ホバー時の色 */
+    }
+
+    /* SNSアイコンのスタイル */
+    .social-icons a {
+      margin-left: 15px; /* SNSアイコン間の余白 */
+      text-decoration: none;
+      color: #555; /* アイコンの色 */
+      font-size: 1.5rem; /* アイコンのサイズ */
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #007bff; /* ホバー時の色 */
+    }
+
+    /* 例: 特定のアイコンの色 */
+    .social-icons .instagram {
+      color: #e72db2; /* インスタグラムのブランドカラー */
+    }
+
+    .social-icons .instagram:hover {
+      color: #e72db2; /* インスタグラムのブランドカラー */
+    }
+
+    .social-icons .hotpepper {
+      color: #FF5A19;
+    }
+
+    .social-icons .hotpepper:hover {
+      color: #FF5A19; /* ホットペッパーのブランドカラー（例） */
+    }
+
+    /* フォントオーサムのアイコンを読み込むためのCSS */
+    /* これは外部ファイルを読み込む代わりですが、通常はheadタグ内でCDNを読み込みます */
+    /* ここでは例としてシンプルなフォントサイズを設定 */
+    .fa-instagram::before { content: "\f16d"; font-family: 'Font Awesome 5 Brands'; } /* 例 */
+    .fa-hotpepper::before { content: "\f2fe"; font-family: 'Font Awesome 5 Brands'; } /* 例 */
+
+    
+    /* ハンバーガー初期状態：非表示（PC用） */
+    .hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding-right: 20px;
+    z-index: 3;
+    }
+
+
+    /* メディアクエリ：スマホ用 */
+    @media (max-width: 768px) {
+    /* ハンバーガー表示 */
+      .hamburger {
+          display: block;
+      }
+
+      /* 右側ナビ非表示にしておく（開閉式） */
+      .header-right {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          position: absolute;
+          top: 0px;
+          right: 0;
+          width: 100%;
+          padding: 0px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          z-index: 3;
+          background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .header-right.open {
+          display: flex;
+      }
+
+      /* メニューを縦並びに */
+      .header-right nav ul {
+          flex-direction: column;
+      }
+
+      .header-right nav ul :nth-child(1) {
+        margin-top: 70px
+      }
+
+      .header-right nav ul li {
+          margin: 15px 0;
+      }
+
+      .header-right .social-icons {
+          justify-content: center;
+          margin-top: 15px;
+      }
+
+      .header-right .social-icons a {
+          margin: 0;
+          padding: 0.5rem;
+      }
+    }
+
+    .top-text {
+      display: none;
+    }
+
+    /* メディアクエリ：スマホ用 */
+    @media (max-width: 768px) {
+      .top-text {
+          display: block;
+      }
+    
+    /* ハンバーガー表示 */
+      .top-text p {
+        margin: 0;
+        text-align: center;
+        }
+      }
+    
+
+
+
+      
+    .slideshow-container {
+      z-index: -2;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: fixed;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #ffffff;
+    }
+
+    .slideshow-container img {
+      position: absolute;
+      /*border-radius: 0.75rem;*/
+      box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: slideshow 30s infinite;
+    }
+
+    /* 各画像のアニメーション開始タイミングをずらす（5秒ずつ） */
+    .slideshow-container img:nth-child(1) { animation-delay: 0s; }
+    .slideshow-container img:nth-child(2) { animation-delay: 5s; }
+    .slideshow-container img:nth-child(3) { animation-delay: 10s; }
+    .slideshow-container img:nth-child(4) { animation-delay: 15s; }
+    .slideshow-container img:nth-child(5) { animation-delay: 20s; }
+    .slideshow-container img:nth-child(6) { animation-delay: 25s; }
+    /*.slideshow-container img:nth-child(7) { animation-delay: 30s; }*/
+
+    @keyframes slideshow {
+      0% { opacity: 0; }
+      8.3% { opacity: 1; }    /* 0.0s - 2.5s fade in */
+      15.86% { opacity: 1; }    /* 2.5s - 5.0s stay */
+      25.00% { opacity: 0; }    /* 5.0s - 7.0s fade out */
+      100% { opacity: 0; }
+    }
+
+
+    .home-text {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
+    color: rgba(254, 254, 254, 1.0);
+    font-family: "Libertinus Math";
+    font-size: clamp(3.5rem, 5vw, 3rem); /* デフォルト（PC用） */
+  }
+
+  /* スマホ（画面幅が768px以下）の場合 */
+  @media (max-width: 768px) {
+    .home-text {
+      font-size: 2.0rem;
+    }
+  }
+      
+
+    /*about*/
+    .about {
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      background-color: rgba(254, 254, 254, 1);
+      /*border-radius: 12px;*/
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-family: serif;
+      line-height: 1.8;
+      color: #333;
+      text-align: center;
+    }
+
+    .about img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    .about strong {
+      color: #1480ae;
+      font-weight: bold;
+    }
+
+    .about em {
+      font-style: normal;
+      background-color: rgb(223 241 249);
+      border-radius: 4px;
+    }
+
+    .about p {
+      font-size: 1.3rem;
+      margin: 24px 0rem;
+    }
+
+    @media (max-width: 768px) {
+
+      .about p {
+        font-size: 1rem;
+        margin: 1rem 0rem;
+        text-align: left;
+      }
+    }
+
+
+
+    /*profile*/
+    .profile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+
+    .profile-text {
+      flex: 2 1 300px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      background-color: rgba(254, 254, 254, 1.0);
+      /*border-radius: 12px;*/
+      /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);*/
+      font-family: serif;
+      line-height: 1.8;
+      color: #333;
+      text-align: center;
+    }
+
+
+    .profile p {
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile p{
+        margin: 1rem 0rem;
+        text-align: left;
+      }
+
+      .profile p {
+        font-size: 1rem;
+      }
+    }
+
+    .profile-image {
+      max-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(254, 254, 254, 1.0);;
+      padding: 1rem 3rem 1rem 3rem;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 20px -10px 0px 10px rgb(199 217 221), -18px 6px 0px 10px rgb(190 233 242);
+    }
+
+
+
+    
+
+    .service {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      background-color: #fefefe;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 232, 255, 0.3);
+      /*margin-bottom: 2rem;*/
+      overflow: hidden;
+      padding: 1rem;
+      font-family: serif;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .floor .service:nth-child(3) {
+      flex-direction: row-reverse;
+    }
+
+
+    .menu h2 {
+      font-family: serif;
+    }
+
+    .service-image {
+      flex: 1 1 250px;
+      max-width: 300px;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .service-text {
+      flex: 2 1 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .service-text h3 {
+      font-size: 1.5rem;
+      color: #444;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-text p {
+      font-size: 1rem;
+      margin: 0.3rem 0;
+      color: #1480ae;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 300px; /* 適宜調整 */
+      margin: auto;
+    }
+
+    .slider-container img {
+      width: 100%;
+      display: none;
+    }
+
+    .slider-container img.active {
+      display: block;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255,255,255,0.7);
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    .prev-button {
+      left: 0;
+    }
+
+    .next-button {
+      right: 0;
+    }
+
+
+    .price-table {
+      /*max-width: 800px;*/
+      position: relative;
+      margin: 0px auto;
+      padding: 20px;
+      /*
+      background: linear-gradient(to top, 
+        rgba(2, 0.7),
+        rgba(252,252,252, 0.7),
+        rgba(45 ,153,175, 0.7),
+        rgba(156,210,239, 0.7),
+        rgba(110,193,227, 0.7)
+      );
+      */
+      /*border-radius: 12px;*/
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-family: serif;
+      color: #333;
+    }
+
+    .overlay-image {
+        position: absolute;
+        top: 10;
+        left: 10;
+        width: 100px; /* 画像の大きさ */
+        opacity: 0.4;  /* 薄くする（0:完全透明、1:不透明） */
+        pointer-events: none; /* クリック操作を通過させる（任意） */
+      }
+
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+      margin-top: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subcategory {
+      font-weight: bold;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      margin: 0px;
+      border-bottom: 1px dashed #ccc;
+      align-items:flex-end
+    }
+
+    .item span:first-child {
+      color: #1480ae; /* 左側のテキスト（メニュー名） */
+    }
+
+      .item span:last-child {
+      color: #EC6798; /* 右側のテキスト（金額） */
+      font-size: 1.3rem;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    /* デフォルトでは1列表示 */
+    .price-table-columns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* 幅が800pxを超えたら2列にする */
+    @media screen and (min-width: 768px) {
+      .price-table-columns {
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 10px;
+      }
+
+      .section {
+        width: calc(50% - 10px); /* 2列、間に10pxの余白 */
+      }
+
+      .item span:first-child {
+        font-size: 1.2rem;
+    }
+
+      .item span:last-child {
+        font-size: 1.3rem;
+    }
+
+      .item {
+        margin: 0 30px;
+      }
+
+    }
+
+
+    .scroll-wrapper {
+      overflow: hidden;
+      width: 100%;
+      direction: rtl; /* 右から左へ */
+      background-color: #ffffff;
+      border-radius: 10px;
+    }
+
+    .payment-group {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 30s linear infinite;
+    }
+
+    .scroll-track {
+      display: flex;
+      gap: 16px;
+    }
+
+    .payment-group img {
+      height: 40px;
+      object-fit: contain;
+    }
+
+    /* アニメーションの設定 */
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(30%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+
+    .pay_info {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .pay_info span {
+      padding:0 20px;
+    }
+
+    .pay_info::before,
+    .pay_info::after {
+      content:"";
+      height:1px;
+      width:10%;
+      background:#333;
+    }
+
+    .credit_icon {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .credit_icon img {
+      height: 2rem;
+    }
+
+
+
+
+
+    .access {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background-color: #f9f9f9;
+      padding: 1rem 3rem 3rem 3rem;
+      /*border-radius: 1rem;*/
+      /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+      align-items: center;
+      justify-content: center;
+    }
+
+    .access-info {
+      /*flex: 1 1 300px;*/
+      font-family: serif;
+      color: #333;
+    }
+
+    .access-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .access-info p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+
+
+
+    .access_img {
+      width: 400px;
+      padding-top: 325px; /* 画像の高さ */
+      position: relative;
+      /*margin: 2em auto;*/
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-direction:row-reverse
+    }
+    .access_img > img {
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      top: 0;
+      transition: all 0.5s;
+      border-radius: 3px;
+      box-shadow:0px 0px 5px 0px rgba(0,0,0,0.3);
+      width: 30vh;
+      height: 300px;
+    }
+    .access_img input[name='cp_switch'] {
+      display: none;
+    }
+    /* サムネイル */
+    .access_img label {
+      margin: 15px 5px 0 5px;
+      border: 2px solid #ffffff;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      opacity: 0.6;
+      border-radius: 3px;
+      padding: 0;
+    }
+    .access_img label:hover {
+      opacity: 0.9;
+    }
+    .access_img label img {
+      display: block;
+      width: 40px;
+      border-radius: 2px;
+    }
+    .access_img input[name='cp_switch']:checked + label {
+      border: 2px solid #FF7043;
+      opacity: 1;
+    }
+    .access_img input[name='cp_switch'] ~ img {
+      opacity: 0;
+    }
+    /* チェックされたとき iframe を表示 */
+    .access_img input[name='cp_switch']:checked + label + iframe {
+      opacity: 1;
+    }
+
+    .access_img input[name='cp_switch']:checked + label + img {
+      opacity: 1;
+    }
+
+    .access_img iframe {
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      top: 0;
+      transition: all 0.5s;
+      opacity: 0;
+      border-radius: 3px;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+      width: 30vh;
+      height: 300px;
+      z-index: 1;
+    }
+
+
+    .slideshow {
+  position: relative;
+  overflow: hidden;
+}
+
+input[name="slideshow"] {
+  display: none;
+}
+
+.slideContents {
+  display: flex;
+  width: 400%;
+  transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  text-align: center;
+  background: #f9f9f9;
+  /*background: #86c0de;*/
+  user-select: none;
+}
+
+.slideContents section {
+  width: 25%;
+}
+
+.slideContents section img {
+  max-width: 100%;
+  height: auto;
+  /*padding: 0 50px;*/
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+@media (min-width: 520px) {
+  .slideContents section img {
+    /*aspect-ratio: 3 / 1;*/
+    object-fit: cover;
+  }
+}
+
+/* スライド切り替え */
+#switch1:checked ~ .slideContents {
+  transform: translateX(0%);
+}
+#switch2:checked ~ .slideContents {
+  transform: translateX(-25%);
+}
+#switch3:checked ~ .slideContents {
+  transform: translateX(-50%);
+}
+#switch4:checked ~ .slideContents {
+  transform: translateX(-75%);
+}
+
+/* arrows */
+.arrow, .arrow label, .arrow .ico {
+  position: absolute;
+}
+.arrow {
+  top: 0;
+  margin: 0;
+  transition: background 0.3s;
+}
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+}
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.arrow, .arrow label {
+  cursor: pointer;
+  width: 50px;
+  height: 100%;
+}
+.arrow label {
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.arrow .ico {
+  top: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid #fff;
+  opacity: 0;
+}
+.prev .ico {
+  left: 50%;
+  border-left: 3px solid #fff;
+  transform: rotate(-45deg);
+  transition: left 0.3s, opacity 0.3s;
+}
+.next .ico {
+  right: 50%;
+  border-right: 3px solid #fff;
+  transform: rotate(45deg);
+  transition: right 0.3s, opacity 0.3s;
+}
+.arrow:hover .ico {
+  opacity: 0.6;
+}
+.prev:hover .ico {
+  left: calc(50% - 6px);
+}
+.next:hover .ico {
+  right: calc(50% - 6px);
+}
+
+/* 矢印動作 */
+#switch1:checked ~ .prev label[for="switch4"],
+#switch2:checked ~ .prev label[for="switch1"],
+#switch3:checked ~ .prev label[for="switch2"],
+#switch4:checked ~ .prev label[for="switch3"],
+#switch1:checked ~ .next label[for="switch2"],
+#switch2:checked ~ .next label[for="switch3"],
+#switch3:checked ~ .next label[for="switch4"],
+#switch4:checked ~ .next label[for="switch1"] {
+  pointer-events: auto;
+}
+
+/* スライドショー2 */
+input[name="slideshow2"] {
+  display: none;
+}
+
+#switchA1:checked ~ .slideContents {
+  transform: translateX(0%);
+}
+#switchA2:checked ~ .slideContents {
+  transform: translateX(-25%);
+}
+#switchA3:checked ~ .slideContents {
+  transform: translateX(-50%);
+}
+#switchA4:checked ~ .slideContents {
+  transform: translateX(-75%);
+}
+
+/* 矢印制御（2つ目） */
+#switchA1:checked ~ .prev label[for="switchA4"],
+#switchA2:checked ~ .prev label[for="switchA1"],
+#switchA3:checked ~ .prev label[for="switchA2"],
+#switchA4:checked ~ .prev label[for="switchA3"],
+#switchA1:checked ~ .next label[for="switchA2"],
+#switchA2:checked ~ .next label[for="switchA3"],
+#switchA3:checked ~ .next label[for="switchA4"],
+#switchA4:checked ~ .next label[for="switchA1"] {
+  pointer-events: auto;
+}
+
+
+/* スライドショー3 */
+input[name="slideshow3"] {
+  display: none;
+}
+
+#switchB1:checked ~ .slideContents {
+  transform: translateX(0%);
+}
+#switchB2:checked ~ .slideContents {
+  transform: translateX(-25%);
+}
+#switchB3:checked ~ .slideContents {
+  transform: translateX(-50%);
+}
+#switchB4:checked ~ .slideContents {
+  transform: translateX(-75%);
+}
+
+/* 矢印制御（2つ目） */
+#switchB1:checked ~ .prev label[for="switchB4"],
+#switchB2:checked ~ .prev label[for="switchB1"],
+#switchB3:checked ~ .prev label[for="switchB2"],
+#switchB4:checked ~ .prev label[for="switchB3"],
+#switchB1:checked ~ .next label[for="switchB2"],
+#switchB2:checked ~ .next label[for="switchB3"],
+#switchB3:checked ~ .next label[for="switchB4"],
+#switchB4:checked ~ .next label[for="switchB1"] {
+  pointer-events: auto;
+}
+
+/* スライドショー4 */
+input[name="slideshow4"] {
+  display: none;
+}
+
+#switchC1:checked ~ .slideContents {
+  transform: translateX(0%);
+}
+#switchC2:checked ~ .slideContents {
+  transform: translateX(-25%);
+}
+#switchC3:checked ~ .slideContents {
+  transform: translateX(-50%);
+}
+#switchC4:checked ~ .slideContents {
+  transform: translateX(-75%);
+}
+
+/* 矢印制御（2つ目） */
+#switchC1:checked ~ .prev label[for="switchC4"],
+#switchC2:checked ~ .prev label[for="switchC1"],
+#switchC3:checked ~ .prev label[for="switchC2"],
+#switchC4:checked ~ .prev label[for="switchC3"],
+#switchC1:checked ~ .next label[for="switchC2"],
+#switchC2:checked ~ .next label[for="switchC3"],
+#switchC3:checked ~ .next label[for="switchC4"],
+#switchC4:checked ~ .next label[for="switchC1"] {
+  pointer-events: auto;
+}
+   
+
+
+
+
+
+    footer {
+      background-color: #f9f9f9;
+      color: #1480ae;
+    }
+
+    footer p {
+      margin: 0;
+      padding: 16px;
+    }
+
+        
+
+        
+
+    
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+  <header>
+    <div class="header-left">
+      <a href="/">
+        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/4_price1.png?raw=true" alt="logo">
+      </a>
+    </div>
+
+    <div class="top-text">
+      <p>Ohara Home Salon</p>
+      <p>Self Beauty Salon Ito</p>
+    </div>
+  
+    <!-- ハンバーガーメニューアイコン（スマホのみ表示） -->
+    <div class="hamburger" id="hamburger">
+      &#9776; <!-- Unicodeで「≡」 -->
+    </div>
+  
+    <!-- PC用ナビゲーション -->
+    <div class="header-right" id="nav-menu">
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#price-table">Price</a></li>
+          <li><a href="#access">Access</a></li>
+        </ul>
+      </nav>
+      <div class="social-icons">
+        <a href="https://beauty.hotpepper.jp/kr/slnH000498972/" target="_blank" class="hotpepper" aria-label="Hot Pepper">
+          <i class="fa-regular fa-calendar"></i>
+        </a>
+        <a href="https://www.instagram.com/ohara_homesalon/" target="_blank" class="instagram" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="slideshow-container">
+      <img src="https://github.com/niku-tori/oohara_homepage/blob/main/2_home1.png?raw=true" alt="home1">
+      <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/b6baad5b9b5dea5dec1455fb9b82ff19df34dafa/2_home2.jpg" alt="home2">
+      <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/0f28abee2446343dbdfecc76cf22f0ceea596517/2_home3.jpg" alt="home3">
+      <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/0f28abee2446343dbdfecc76cf22f0ceea596517/2_home4.jpg" alt="home4">
+      <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/4c17ba5037ddffdbad8f5d26ec99f239486d8999/2_home7.jpg" alt="home5">
+      <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/2898700edc38c9c3b1b2f3da78ca746a4a432ceb/2_home5.jpg" alt="home6">
+    </div>
+
+    <div style="width: 100%; height: 100vh; position: relative;">
+      <p class="home-text">Ohara Home Salon</p>
+    </div>
+    
+    <div class="about" id="about">
+      <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/928cebf2fc39cec86d819e046d02d39aa51fd2b7/2_home6.jpg" alt="">
+      <h1>About</h1>
+      <!--<h2>自宅サロンであなただけの美容空間</h2>-->
+      <p>初めまして。<strong>大原ホームサロン</strong>です。</p>
+      <p>
+        当サロンは完全予約制のプライベート空間でお客様の様々なお悩みにお応えする美容サービスを提供しております。
+      </p>
+      <p>
+        <strong>1階</strong>では、お客様ご自身で行える<em>セルフエステ（フェイシャル、ボディ、脱毛）</em>をご利用いただけます。<br>
+        短時間で手軽に低価格で効果の出る最新機器を取り揃え、美容スタッフが丁寧に使い方の指導を致しますので、ご安心して施術頂けます。
+      </p>
+      <p>
+        <strong>2階</strong>では、熟練のエステティシャンによる<em>フェイシャルマッサージ</em>をご提供しております。<br>
+        リラクゼーションと共に<em>イオン導入</em>や<em>エレクトロポーション</em>を取り入れ1回で効果の出る仕上がりに満足頂けるかと思います。
+      </p>
+      <p>
+        また、歯の<em>セルフホワイトニング</em>もこちらでご利用頂けます。<br>
+        時短で簡単、しみないホワイトニングはお子様(小学生以上)から男性にも人気の施術となっております。
+      </p>
+    </div>
+
+
+    <div style="background-color: #fefefe; padding: 2rem;">
+      <h1>Profile</h1>
+    
+      <div class="profile">  
+        <div class="profile-image">
+          <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/8b91ab32e15716214307964f43f4bf92b993c176/2_home8.jpg" alt="home6">
+        </div>
+
+        <div class="profile-text">
+          <p>
+            寺島亜佐子
+          </p>
+          <p>
+            エステティシャン歴25年
+          </p>
+          <p>
+            30歳を機にメナードフェイシャルサロンにて美容の基礎知識を学びながら<br>エステセラピストの資格を取得。<br>
+            たくさんのお客様を担当させて頂きました。
+          </p>
+          <p>
+            7年前に伊東市に移住し、東京での経験を生かしたハンドマッサージのサロンを<br>自宅ビル2階にオープン。<br>
+            その後1階に最新機器を取り入れたセルフエステを併設致しました。
+          </p>
+          <p>
+            お客様のニーズに合わせたメニューをご案内致します。
+          </p>
+        </div>
+      </div>
+    </div>
+    
+
+
+    <div style="background-color: #fefefe; padding: 2rem;" id="menu" class="menu">
+      <h1>Menu</h1>
+      <section class="floor">
+        <h2>1階 セルフエステ</h2>
+        <div class="service">
+          <div class="service-image">
+            <h2>セルフ超音波</h2>
+            <div>
+              <div class="slideshow">
+                <input type="radio" name="slideshow" id="switch1" checked>
+                <input type="radio" name="slideshow" id="switch2">
+                <input type="radio" name="slideshow" id="switch3">
+                <input type="radio" name="slideshow" id="switch4">
+            
+                <div class="slideContents">
+                  <section><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" alt=""></section>
+                  <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" alt="" ></section>
+                  <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" alt="" ></section>
+                  <section><img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" alt="" ></section>
+                </div>
+            
+                <p class="arrow prev">
+                  <i class="ico"></i>
+                  <label for="switch4"></label>
+                  <label for="switch1"></label>
+                  <label for="switch2"></label>
+                  <label for="switch3"></label>
+                </p>
+                <p class="arrow next">
+                  <i class="ico"></i>
+                  <label for="switch2"></label>
+                  <label for="switch3"></label>
+                  <label for="switch4"></label>
+                  <label for="switch1"></label>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="service-text">
+            <h3>【フェイシャル】</h3>
+            <p>超音波の熱エネルギーが皮膚の深部に働きかけ、施術直後から引き締め効果を実感。</p>
+            <p>さらにコラーゲン生成を促すことで効果が持続します。</p>
+            <p><strong>効果:</strong> たるみ、シワの改善  リストアップ  小顔 肌の引き締め  コラーゲン生成</p>
+
+            <h3>【糸リフトアップ】</h3>
+            <p>美容成分たっぷりの糸をお肌に浸透させた上から超音波を当てます。</p>
+            <p><strong>効果:</strong>糸が収縮することによりフェイスラインのリフトアップと共にハリ・ツヤを与え美肌へと導きます</p>
+                
+            <h3>【ボディ】</h3>
+            <p>超音波の熱エネルギーで脂肪細胞を破壊することで皮膚や筋膜層を引き締めます。</p>
+            <p>破壊された脂肪細胞は再生しない為リバウンドしにくいので効果が持続します。</p>
+            <p><strong>効果:</strong> 脂肪分解  引き締め  お腹のたるみ ヒップのたるみ  二の腕やふくらはぎの引き締め</p>
+          </div>
+        </div>
+        
+            
+
+        <div class="service">
+          <div class="service-image">
+            <h2>セルフ高周波(RF波)</h2>
+            <div class="slideshow">
+              <input type="radio" name="slideshow2" id="switchA1" checked>
+              <input type="radio" name="slideshow2" id="switchA2">
+              <input type="radio" name="slideshow2" id="switchA3">
+              <input type="radio" name="slideshow2" id="switchA4">
+            
+              <div class="slideContents">
+                <section><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu2.jpg?raw=true" alt=""></section>
+                <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/39c7188db3915e77fccd13535310454772229627/%E9%AB%98%E5%91%A8%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+                <section><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu2.jpg?raw=true" alt=""></section>
+                <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/39c7188db3915e77fccd13535310454772229627/%E9%AB%98%E5%91%A8%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+              </div>
+            
+              <p class="arrow prev">
+                <i class="ico"></i>
+                <label for="switchA4"></label>
+                <label for="switchA1"></label>
+                <label for="switchA2"></label>
+                <label for="switchA3"></label>
+              </p>
+              <p class="arrow next">
+                <i class="ico"></i>
+                <label for="switchA2"></label>
+                <label for="switchA3"></label>
+                <label for="switchA4"></label>
+                <label for="switchA1"></label>
+              </p>
+            </div>
+          </div>
+          <div class="service-text">
+            <h3>【フェイシャル】</h3>
+            <p>肌の深部を温めてコラーゲンを生成。</p>
+            <p>リンパの流れを促進し、むくみや老廃物を排出します。</p>
+            <p><strong>効果:</strong> 肌の引き締め ハリや弾力 むくみ解消 血行促進</p>
+
+            <h3>【ボディ】</h3>
+            <p>温熱効果により脂肪細胞を分解し燃焼しやすくします。</p>
+            <p>特にセルライトは脂肪と老廃物の固まりでセルライトを柔らかくし分解するだけでなく代謝を改善します。</p>
+            <p><strong>効果:</strong> 脂肪燃焼 セルライト改善 血行促進 むくみや冷え改善 老廃物排出 代謝向上</p>
+          </div>
+        </div>
+
+
+        
+        <div class="service">
+          <div class="service-image">
+            <h2>セルフ脱毛</h2>
+            <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu3.jpg?raw=true" alt="">
+          </div>
+          <div class="service-text">
+            <!--<h2 style="margin: 0;">SHR脱毛×LED脱毛</h2>-->
+            <h2>SHR脱毛×LED脱毛</h2>
+            <!--<div style="border: 2px solid #b1b1b1; border-radius: 1rem; margin-top: 24px;">-->
+            <div>
+              <h3>【SHR脱毛】</h3>
+              <p>「バルジ領域」という毛根に毛が生える命令を出す部分にダメージを与えます。</p>
+              <p><strong>効果:</strong>発毛の命令を出すことが出来なくなり最終的に今生えている毛が抜け落ちた後は生えてこなくなります。</p>
+              <p>毛周期に関係なく短時間で脱毛完了となります。</p>
+            </div>  
+
+            <!--<div style="border: 2px solid #b1b1b1; border-radius: 1rem; margin-top: 24px;">-->
+            <div>
+              <!--<h3 style="margin-top: 0;">【LED脱毛】</h3>-->
+              <h3>【LED脱毛】</h3>
+              <p>コラーゲンマシンと同じ光を当てながらの脱毛。</p>
+              <p><strong>効果:</strong> 肌へのダメージを少なく肌を整えます</p>
+            </div>
+          </div>
+        </div>
+      </section>
+        
+      <section class="floor">
+        <h2>2階 ベッドルーム</h2>
+        <div class="service">
+          <div class="service-image">
+            <h2>フェイシャルマッサージ</h2>
+            <div class="slideshow">
+              <input type="radio" name="slideshow3" id="switchB1" checked>
+              <input type="radio" name="slideshow3" id="switchB2">
+              <input type="radio" name="slideshow3" id="switchB3">
+              <input type="radio" name="slideshow3" id="switchB4">
+            
+              <div class="slideContents">
+                <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%91%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+                <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+                <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%91%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+                <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+              </div>
+            
+              <p class="arrow prev">
+                <i class="ico"></i>
+                <label for="switchB4"></label>
+                <label for="switchB1"></label>
+                <label for="switchB2"></label>
+                <label for="switchB3"></label>
+              </p>
+              <p class="arrow next">
+                <i class="ico"></i>
+                <label for="switchB2"></label>
+                <label for="switchB3"></label>
+                <label for="switchB4"></label>
+                <label for="switchB1"></label>
+              </p>
+            </div>
+          </div>
+          <div class="service-text">
+            <p>デコルテからフェイシャルを熟練のハンドマッサージでリラクゼーションとともに美肌へと導く極上エステ。</p>
+
+            <p><strong>クレンジング</strong> 毛穴の汚れを丁寧に落とします。</p>
+            <p><strong>マッサージ</strong> デコルテからお顔へハンドによりリンパを流しながら優しくリフトアップ。</p>
+            <p><strong>ハーブピーリング</strong> ハーブの粒が優しく古い角質や毛穴の汚れやを取り除きます。</p>
+            <p><strong>EMS</strong> 微弱電流で筋肉を刺激して美容成分をお肌の隅々まで広げます。</p>
+              
+            <h3>【スタンダードコース】</h3>
+            <p><strong>イオン導入</strong> 電気(イオン)の力を利用して毛穴を広げ美容成分をお肌の奥へ届けます。</p>
+            
+
+            <h3>【リフトアップコース】</h3>
+            
+            <p><strong>エレクトロポレーション</strong> 電気パルスを瞬時に流し毛穴を広げ美容液の吸収を飛躍的に高めます。</p>
+            <p><strong>ヘッドマッサージ</strong> 頭皮を揉みほぐし、フェイスラインを引き上げます。</p>
+
+            <h3>【(オプション)背中ピーリング】</h3>
+            <p>ハーブピーリングを背中全体に塗布し、背中ニキビやざらつきを解消。同時に肩や背中のコリもほぐします。</p>
+                    
+          </div>
+        </div>
+        
+        <div class="service">
+          <div class="service-image">
+            <h2>ホワイトニング</h2>
+              <div class="slideshow">
+                <input type="radio" name="slideshow4" id="switchC1" checked>
+                <input type="radio" name="slideshow4" id="switchC2">
+                <input type="radio" name="slideshow4" id="switchC3">
+                <input type="radio" name="slideshow4" id="switchC4">
+              
+                <div class="slideContents">
+                  <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/5ba946916150526e703af01d46238ae5d6d83203/3_menu5.jpg" alt=""></section>
+                  <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/4df77216eac2422617b26a210c225eaa626a74af/%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%83%8B%E3%83%B3%E3%82%AF%E3%82%99%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+                  <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/5ba946916150526e703af01d46238ae5d6d83203/3_menu5.jpg" alt=""></section>
+                  <section><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/4df77216eac2422617b26a210c225eaa626a74af/%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%83%8B%E3%83%B3%E3%82%AF%E3%82%99%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" alt=""></section>
+                </div>
+              
+                <p class="arrow prev">
+                  <i class="ico"></i>
+                  <label for="switchC4"></label>
+                  <label for="switchC1"></label>
+                  <label for="switchC2"></label>
+                  <label for="switchC3"></label>
+                </p>
+                <p class="arrow next">
+                  <i class="ico"></i>
+                  <label for="switchC2"></label>
+                  <label for="switchC3"></label>
+                  <label for="switchC4"></label>
+                  <label for="switchC1"></label>
+                </p>
+              </div>
+          </div>
+          <div class="service-text">
+            <h3>【歯のセルフホワイトニング】</h3>
+            <p>短時間、簡単、しみないホワイトニング。</p>
+            <p>チタン溶液で歯の汚れを浮かせてくすみのない白さへ導きます。</p>
+            <p>*小学生以上のお子様、男性も施術可能です。</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <div style="background-color: #fefefe; padding: 2rem;">
+    <h1>Price</h1>
+
+    <div style="background-color: #ffffff;">
+      <div class="price-table" id="price-table">
+        <!--<img class="overlay-image" src="https://github.com/niku-tori/oohara_homepage/blob/main/4_price1.png?raw=true" alt="Overlay Image">-->
+    
+        <div class="price-table-columns">
+          <div class="section">
+            <div class="section-title">セルフ超音波</div>
+      
+            <div class="subcategory">【フェイシャル】</div>
+            <div class="item"><span>気軽に時短コース(10分)</span><span>￥3300</span></div>
+            <div class="item"><span>スタンダードコース(15分)</span><span>￥5500</span></div>
+            <div class="item"><span>リフトアップコース(20分)</span><span>￥7700</span></div>
+            <div class="item"><span>小顔リフトアップコース(25分)</span><span>￥9900</span></div>
+            <div class="item"><span>系リフトアップコース(25分)</span><span>￥16500</span></div>
+      
+            <div class="subcategory">【ボディ】</div>
+            <div class="item"><span>気軽に1部位コース(15分)</span><span>￥5500</span></div>
+            <div class="item"><span>スタンダード1部位コース(20分)</span><span>￥7700</span></div>
+            <div class="item"><span>しっかり2部位コース(25分)</span><span>￥9900</span></div>
+            <div class="item"><span>しっかり3部位コース(30分)</span><span>￥11000</span></div>
+          </div>
+    
+          <div class="section">
+            <div class="section-title">セルフ高周波</div>
+      
+            <div class="subcategory">【フェイシャル】</div>
+            <div class="item"><span>スタンダード(10分)</span><span>￥3300</span></div>
+            <div class="item"><span>スタンダード＋首肩コース(20分)</span><span>￥5500</span></div>
+      
+            <div class="subcategory">【ボディ】</div>
+            <div class="item"><span>スタンダード1～2部位(20分)</span><span>￥5500</span></div>
+          
+            <div style="margin-top: 50px;" class="section-title">セルフ脱毛</div>
+            <div class="item"><span>気になる部位15分(使い方説明込み)</span><span>￥1200</span></div>
+            <div class="item"><span>5回回数券</span><span>￥5000</span></div>
+          </div>
+    
+          <div class="section">
+            <div class="section-title">フェイシャルマッサージ</div>
+            <div class="item"><span>【スタンダードコース】50分</span><span>￥6000</span></div>
+            <div class="item"><span>【リフトアップコース】70分</span><span>￥8400</span></div>
+            <div class="item"><span>【オプション背中ピーリング】(20分)</span><span>＋￥2400</span></div>
+          </div>
+    
+          <div class="section">
+            <div class="section-title">歯のホワイトニング</div>
+            <div class="item"><span>一回(20分)</span><span>￥3300</span></div>
+            <div class="item"><span>小学生～高校生</span><span>￥2500</span></div>
+            <div class="item"><span>５回回数券(+一回無料)</span><span>￥16500</span></div>
+          </div>
+        </div>
+
+
+
+        <details>
+          <summary style="text-align: center; font-size: 1.4rem;
+      color: #444; padding: 1rem 0;">
+          ご利用可能な支払い方法
+          </summary>
+          <h3 class="pay_info"><span>クレジットカード決済</span></h3>
+          <div class="credit_icon">
+            <img src="https://theme.zdassets.com/theme_assets/760728/8d276deaad893e59f6207462ae21332a33bb18e2.png" alt="JCB">
+            <img src="https://faq.airpayment.jp/hc/article_attachments/11725575695769" alt="VISA">
+            <img src="https://theme.zdassets.com/theme_assets/760728/8e29757faf8d84aef5487a00405801fc68e82f7f.png" alt="MasterCard">
+            <img src="https://theme.zdassets.com/theme_assets/760728/78c7ddb491d416672ef5bb72b2851002798037cd.png" alt="American Express">
+            <img src="https://theme.zdassets.com/theme_assets/760728/730f0f6b1a881c07b6539bb9b5886d8c8d625807.png" alt="Diners Club">
+            <img src="https://theme.zdassets.com/theme_assets/760728/498ce93ca6ff4e67903ef063d0f0323128da491d.png" alt="Discover">
+          </div>
+
+          <h3 class="pay_info"><span>QRコード決済</span></h3>
+          <div class="credit_icon">
+            <img src="https://faq.mp.airregi.jp/hc/article_attachments/25215041341337" alt="R Pay">
+            <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873952980249" alt="au PAY">
+            <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873985224345" alt="PayPay">
+            <img src="https://service.smt.docomo.ne.jp/keitai_payment/corporation/logo_share/images/share/dbarai_shop_acceptance.jpg" alt="d払い">
+            <img src="https://www.merpay.com/merchant/assets/merpay_logo.png" alt="メル Pay">
+            <img src="https://theme.zdassets.com/theme_assets/760728/f976e3ee66376139604120fc65d2a68046794c95.png" alt="Union pay">
+          </div>
+
+          <h3 class="pay_info"><span>電子マネー決済</span></h3>
+          <div class="credit_icon">
+            <img src="https://theme.zdassets.com/theme_assets/760728/bf01a08de20f9dc7b7ee2362c6c7518f4bad14a9.png" alt="ID">
+            <img src="https://theme.zdassets.com/theme_assets/760728/4835ddf3629f323941a265a45d0c6f794d65931b.png" alt="Quick pay">
+            <img src="https://theme.zdassets.com/theme_assets/760728/c5c0768b2f13823e95fbea46a317a2c51d56ca09.png" alt="apple pay">
+            <img src="https://www.keiseistore.co.jp/wp-content/uploads/2022/05/suica_pasmo_card.jpg" alt="suica">
+            <img src="https://www.aeon.co.jp/business/member/download/img/waon.png" alt="waon">
+            <img src="https://www.aeon.co.jp/business/member/download/img/nanaco.png" alt="nanaco">
+
+          </div>
+
+
+
+        <!--
+        <div class="scroll-wrapper">
+          <div class="payment-group">
+            
+            <div class="scroll-track">
+              
+              <img src="https://theme.zdassets.com/theme_assets/760728/8d276deaad893e59f6207462ae21332a33bb18e2.png" alt="JCB">
+              <img src="https://faq.airpayment.jp/hc/article_attachments/11725575695769" alt="VISA">
+              <img src="https://theme.zdassets.com/theme_assets/760728/8e29757faf8d84aef5487a00405801fc68e82f7f.png" alt="MasterCard">
+              <img src="https://theme.zdassets.com/theme_assets/760728/78c7ddb491d416672ef5bb72b2851002798037cd.png" alt="American Express">
+              <img src="https://theme.zdassets.com/theme_assets/760728/730f0f6b1a881c07b6539bb9b5886d8c8d625807.png" alt="Diners Club">
+              <img src="https://theme.zdassets.com/theme_assets/760728/498ce93ca6ff4e67903ef063d0f0323128da491d.png" alt="Discover">
+              <img src="https://faq.mp.airregi.jp/hc/article_attachments/25215041341337" alt="R Pay">
+              <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873952980249" alt="au PAY">
+              <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873985224345" alt="PayPay">
+              <img src="https://service.smt.docomo.ne.jp/keitai_payment/corporation/logo_share/images/share/dbarai_shop_acceptance.jpg" alt="d払い">
+              <img src="https://theme.zdassets.com/theme_assets/760728/eff4e4d3000699fe98a14af52a191fe59a4d7427.png" alt="id">
+              <img src="https://theme.zdassets.com/theme_assets/760728/88b22f4bc2aa84a66895e3451a3ab988af08a648.png" alt="quick pay">
+              <img src="https://theme.zdassets.com/theme_assets/760728/7c3a9aed3242d4cef15d5cece6939b528aa659c8.png" alt="apple pay">
+            </div>
+            <div class="scroll-track">
+              
+              <img src="https://theme.zdassets.com/theme_assets/760728/8d276deaad893e59f6207462ae21332a33bb18e2.png" alt="JCB">
+              <img src="https://faq.airpayment.jp/hc/article_attachments/11725575695769" alt="VISA">
+              <img src="https://theme.zdassets.com/theme_assets/760728/8e29757faf8d84aef5487a00405801fc68e82f7f.png" alt="MasterCard">
+              <img src="https://theme.zdassets.com/theme_assets/760728/78c7ddb491d416672ef5bb72b2851002798037cd.png" alt="American Express">
+              <img src="https://theme.zdassets.com/theme_assets/760728/730f0f6b1a881c07b6539bb9b5886d8c8d625807.png" alt="Diners Club">
+              <img src="https://theme.zdassets.com/theme_assets/760728/498ce93ca6ff4e67903ef063d0f0323128da491d.png" alt="Discover">
+              <img src="https://faq.mp.airregi.jp/hc/article_attachments/25215041341337" alt="R Pay">
+              <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873952980249" alt="au PAY">
+              <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873985224345" alt="PayPay">
+              <img src="https://service.smt.docomo.ne.jp/keitai_payment/corporation/logo_share/images/share/dbarai_shop_acceptance.jpg" alt="d払い">
+              <img src="https://theme.zdassets.com/theme_assets/760728/eff4e4d3000699fe98a14af52a191fe59a4d7427.png" alt="id">
+              <img src="https://theme.zdassets.com/theme_assets/760728/88b22f4bc2aa84a66895e3451a3ab988af08a648.png" alt="quick pay">
+              <img src="https://theme.zdassets.com/theme_assets/760728/7c3a9aed3242d4cef15d5cece6939b528aa659c8.png" alt="apple pay">
+            </div>
+          </div>
+        </div> 
+        -->
+        </details>  
+      </div>
+    </div>
+  </div>
+  
+
+
+  <div style="background-color: #f9f9f9; padding: 2rem;">
+    <h1>Access</h1>
+    <div class="access" id="access">
+      <div class="access-info">
+        <p><strong>住所：</strong> 静岡県伊東市大原3-12-9</p>
+        <p><strong>電話番号：</strong> <a href="tel:080-2066-2277">080-2066-2277</a> </p>
+        <p><strong>営業時間：</strong> 11:00～19:00 </p>
+        <p><strong>定休日：</strong>不定休（完全予約制）</p>
+        <p><strong>＊</strong>駐車場有</p>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/ohara_homesalon/" target="_blank" class="instagram" aria-label="Instagram">
+            Instagram <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="access_img">
+        <input type="radio" name="cp_switch" id="photo1"/>
+        <label for="photo1"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/fe5b9079d0088744703411a3863bf8d37e2196f8/5_access3.jpg" /></label>
+        <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/fe5b9079d0088744703411a3863bf8d37e2196f8/5_access3.jpg" />
+
+        <input type="radio" name="cp_switch" id="photo2"/>
+        <label for="photo2"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/5_access2.jpg?raw=true" /></label>
+        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/5_access2.jpg?raw=true" />
+
+        <input type="radio" name="cp_switch" id="photo3" />
+        <label for="photo3"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/5_access1.jpg?raw=true" /></label>
+        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/5_access1.jpg?raw=true" />
+
+        <input type="radio" name="cp_switch" id="photo4" checked/>
+        <label for="photo4"><img src="https://icooon-mono.com/i/icon_10984/icon_109841_64.png"/></label>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3269.6633511173627!2d139.10136486145848!3d34.96504552271357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019c30bc6da1bed%3A0x6def5168095c7c71!2z5aSn5Y6f44Ob44O844Og44K144Ot44OzMUY!5e0!3m2!1sja!2sjp!4v1751524894738!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; background-color: #f9f9f9;">
+    <a href="https://beauty.hotpepper.jp/kr/slnH000498972/" target="_blank" class="hotpepper" aria-label="Hot Pepper" style="text-decoration: none;
+    color: #1480ae; /* アイコンの色 */
+    font-size: 2.5rem; /* アイコンのサイズ */
+    transition: color 0.3s ease;
+    background-color: #1480ae18;
+    border-radius: 10px;
+    padding: 10px;
+    ">
+      <i style="margin-right: 8px;" class="fa-regular fa-calendar"></i>ご予約はこちら
+    </a>
+  </div>
+
+
+    
+  </main>
+  
+
+  <footer>
+    <div>
+      <p style="
+      padding: 120px;
+      text-align: center;
+      color: rgb(120, 120, 120);
+      font-size: clamp(3.5rem, 5vw, 3rem);
+      font-family: Libertinus Math;
+    ">
+      Ohara Home Salon
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
+  
+      // メニュー開閉
+    hamburger.addEventListener("click", function (e) {
+        e.stopPropagation(); // メニュー内クリック扱いにする
+        navMenu.classList.toggle("open");
+    });
+
+    // 画面外クリックでメニューを閉じる
+    document.addEventListener("click", function () {
+        navMenu.classList.remove("open");
+    });
+
+
+
+  </script>
+
+</body>
+</html>
