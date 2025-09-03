@@ -33,6 +33,11 @@
         z-index: 1000;
     }
 
+
+    header .pc {
+        display: none;
+    }
+
     main {
       margin-top: 10vh; /* header の高さ分だけ下げる */
       width: 100%;
@@ -69,6 +74,15 @@
         flex: 1;
         min-width: 200px;
         background: rgb(246, 235, 221);
+      }
+
+      header .pc {
+        display: inline;
+        font-size: 3rem;
+    }
+
+      header h1 {
+        display: none;
       }
 
       main {
@@ -362,6 +376,13 @@
 <body>
   <header>
     <h1>ヘッダー</h1>
+
+    <div class="pc">
+        <p>about</p>
+        <p>menu</p>
+        <p>price</p>
+        <p>access</p>
+    </div>
   </header>
   <main>
     <div class="slideshow-container">
