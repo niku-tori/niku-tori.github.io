@@ -6,6 +6,7 @@
   <title>レスポンシブサイト</title>
   <!-- body フォント: Noto Serif -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       overscroll-behavior: none; /* オーバースクロール無効化 */
@@ -21,8 +22,7 @@
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 10' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='gradYellow' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(110,193,227)'/%3E%3Cstop offset='100%25' stop-color='rgb(124,213,248)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradBlack' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(156,210,239)'/%3E%3Cstop offset='100%25' stop-color='rgb(124,213,248)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradBlue' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(60,182,206)'/%3E%3Cstop offset='100%25' stop-color='rgb(45,153,175)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradGreen' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(228,227,227)'/%3E%3Cstop offset='100%25' stop-color='rgb(224,214,165)'/%3E%3C/linearGradient%3E%3ClinearGradient id='gradRed' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='rgb(197,188,146)'/%3E%3Cstop offset='100%25' stop-color='rgb(224,214,165)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M65,0 S70,4 100,4 L100,0 L0,0 Z' fill='url(%23gradYellow)'/%3E%3Cpath d='M60,0 L65,0 S75,4 100,3 L100,10 L0,10 L0,0 Z' fill='url(%23gradBlack)'/%3E%3Cpath d='M13,0 L60,0 S75,4 100,4 L100,10 L10,10 L10,0 Z' fill='url(%23gradBlue)'/%3E%3Cpath d='M10,0 L13,0 S35,10 100,10 L10,10 L10,0 Z' fill='url(%23gradGreen)'/%3E%3Cpath d='M0,0 L10,0 S20,10 100,10 L0,10 L0,0 Z' fill='url(%23gradRed)'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         width: 100%;
-        max-width: 800px;
-        height: 10vh; /* 画面の10% */
+        height: 8vh; /* 画面の8% */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -33,13 +33,61 @@
         z-index: 1000;
     }
 
+    header .sma {
+      width: 95%;
+      display: flex; /* Flexboxを使って要素を横並びにする */
+      justify-content: space-between; /* 両端に要素を配置 */
+      align-items: center; /* 垂直方向の中央揃え */
+    }
+
+    header .sma .header-left img {
+      height: 7vh; /* アイコンの高さ */
+      vertical-align: middle; /* 垂直方向の中央揃え */
+    }
+
+    header .sma p {
+        margin: 0;
+    }
+
+    header .sma .hamburger {
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+
+    /* スマホ時 */
+    header .nav-menu {
+    display: none;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    }
+
+    header .nav-menu.open {
+    display: flex;
+    justify-content: center;
+    max-height: 500px; /* メニューの高さ分 */
+    padding-top: 8vh;
+    opacity: 0.7;
+    }
 
     header .pc {
         display: none;
     }
 
+    #nav-menu ul {
+        text-align: center;
+    }
+
+
     main {
-      margin-top: 10vh; /* header の高さ分だけ下げる */
+      margin-top: 8vh; /* header の高さ分だけ下げる */
       width: 100%;
       max-width: 800px;
     }
@@ -60,6 +108,21 @@
         margin: 1rem 0rem;
     }
 
+    nav li {
+        margin: 16px 0;
+      }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: #333; /* 通常の文字色 */
+    }
+
     /* PC表示 (800px以上) の場合 */
     @media (min-width: 800px) {
       body {
@@ -77,11 +140,21 @@
       }
 
       header .pc {
-        display: inline;
-        font-size: 3rem;
+        display: block;
     }
 
-      header h1 {
+      .pc nav ul li a {
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: #333; /* 通常の文字色 */
+      }
+
+      .pc nav ul li a:hover {
+        color: #745b3e; /* ホバー時の色（ピンク系例） */
+        border-bottom: 2px solid #745b3e; /* 下線でアクセント */
+    }
+
+      header .sma {
         display: none;
       }
 
@@ -99,7 +172,7 @@
 
     .slideshow-container {
       width: 100%;
-      height: 90vh;
+      height: 92vh;
       overflow: hidden;
       position: relative;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -165,6 +238,8 @@
         opacity: 0.2;
     }
 
+
+    /*profile*/
     .profile, .profile-container {
         padding: 2rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -181,11 +256,12 @@
 
     .profile-image img {
         width: 100%;
-        max-width: 300px;
+        max-width: 200px;
         border-radius: 50%;
         box-shadow: 20px -10px 0px 10px rgb(199 217 221), -18px 6px 0px 10px rgb(190 233 242);
     }
 
+    /*menu*/
     .menu {
         padding: 2rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -196,16 +272,67 @@
         padding: 1rem 0;
     }
 
-    .menu-image {
+    .menu-img {
         width: 100%;
-        text-align: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding-top: 400px;
+        margin: 1rem 0;
     }
 
-    .menu-image img {
+    .menu-img > img {
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin: 0 auto;
+        top: 0;
         width: 100%;
         max-width: 400px;
         border-radius: 20% 20% 3% 3%;
+        transition: all 0.5s;
     }
+
+    /* サムネイル */
+    .menu-img label {
+      margin: 5px;
+      border: 2px solid #ffffff;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      opacity: 0.6;
+      border-radius: 20% 20% 3% 3%;
+      padding: 0;
+    }
+    .menu-img label:hover {
+      opacity: 0.9;
+    }
+    .menu-img label img {
+      display: block;
+      width: 40px;
+      border-radius: 20% 20% 3% 3%;
+    }
+
+    .menu-img input[name='cp_switch1'] {
+      display: none;
+    }
+
+    .menu-img input[name='cp_switch1']:checked + label {
+      border: 2px solid #FF7043;
+      opacity: 1;
+    }
+    .menu-img input[name='cp_switch1'] ~ img {
+      opacity: 0;
+    }
+
+    .menu-img input[name='cp_switch1']:checked + label + img {
+      opacity: 1;
+    }
+
+
+
+
+
 
     .menu-text , .menu-container h2 {
         margin: auto;
@@ -229,7 +356,7 @@
         background: #e0f0ff; /* 開いた時の色 */
     }
 
-    
+    /*price*/
     .price {
         padding: 2rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -271,10 +398,7 @@
       font-size: 1.3rem;
     }
 
-    .item:last-child {
-      border-bottom: none;
-    }
-
+    /*access*/
     .access {
         padding: 2rem;
     }
@@ -363,27 +487,88 @@
       z-index: 1;
     }
 
+    .footer {
+  display: flex;
+  justify-content: center; /* 中央寄せ */
+  width: 100%;
+  padding: 5rem 0;
+  background-color: rgb(220, 220, 220);
+}
+
+.footer-text {
+  width: 80%;               /* 横幅を常にページの80% */
+  font-size: clamp(1rem, 5vw, 3rem); /* 画面幅に応じて可変 */
+  font-weight: clamp(400, 5vw, 700); /* 太さも可変に */
+  text-align: center;       /* 中央寄せ */
+  color: rgb(120, 120, 120);
+  margin: 0;
+}
 
 
 
-
-    
-
-
-  </style>
-
+</style>
 </head>
 <body>
   <header>
-    <h1>ヘッダー</h1>
+    <div class="sma">
+        <div class="header-left">
+            <a href="/">
+              <img src="https://github.com/niku-tori/oohara_homepage/blob/main/4_price1.png?raw=true" alt="logo">
+            </a>
+          </div>
+      
+          <div class="top-text">
+            <p>Ohara Home Salon</p>
+            <p>Self Beauty Salon Ito</p>
+          </div>
+        
+          <div class="hamburger" id="hamburger">
+            &#9776;
+          </div>
+          <div class="nav-menu" id="nav-menu">
+            <nav>
+                <ul>
+                  <li><a href="#About">About</a></li>
+                  <li><a href="#Menu">Menu</a></li>
+                  <li><a href="#Price">Price</a></li>
+                  <li><a href="#Access">Access</a></li>
+                  <li>
+                    <a href="https://www.instagram.com/ohara_homesalon/" target="_blank" rel="noopener noreferrer" style="font-size: 1.2rem;">
+                      <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://beauty.hotpepper.jp/kr/slnH000498972/" target="_blank" rel="noopener noreferrer" style="font-size: 1.2rem;">
+                        <i class="fa-regular fa-calendar"></i> Reserve
+                    </a>
+                  </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
     <div class="pc">
-        <p>about</p>
-        <p>menu</p>
-        <p>price</p>
-        <p>access</p>
+        <nav>
+            <ul>
+              <li><a href="#About">About</a></li>
+              <li><a href="#Menu">Menu</a></li>
+              <li><a href="#Price">Price</a></li>
+              <li><a href="#Access">Access</a></li>
+              <li>
+                <a href="https://www.instagram.com/ohara_homesalon/" target="_blank" rel="noopener noreferrer" style="font-size: 1.2rem;">
+                  <i class="fab fa-instagram"></i> Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://beauty.hotpepper.jp/kr/slnH000498972/" target="_blank" rel="noopener noreferrer" style="font-size: 1.2rem;">
+                    <i class="fa-regular fa-calendar"></i> Reserve
+                </a>
+              </li>
+            </ul>
+        </nav>
     </div>
   </header>
+
   <main>
     <div class="slideshow-container">
         <img src="https://github.com/niku-tori/oohara_homepage/blob/main/2_home1.png?raw=true" alt="home1">
@@ -395,7 +580,7 @@
         <p class="home-text">Ohara Home Salon</p>
     </div>
 
-    <div class="about" id="about">
+    <div class="about" id="About">
         <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/928cebf2fc39cec86d819e046d02d39aa51fd2b7/2_home6.jpg" alt="">
         <h1>About</h1>
         <!--<h2>自宅サロンであなただけの美容空間</h2>-->
@@ -432,12 +617,12 @@
                 エステティシャン歴25年
             </p>
             <p>
-                30歳を機にメナードフェイシャルサロンにて美容の基礎知識を学びながらエステセラピストの資格を取得。<br>
+                30歳を機にメナードフェイシャルサロンにて、美容の基礎知識を学びながらエステセラピストの資格を取得。<br>
                 たくさんのお客様を担当させて頂きました。
             </p>
             <p>
                 7年前に伊東市に移住し、東京での経験を生かしたハンドマッサージのサロンを自宅ビル2階にオープン。<br>
-                その後1階に最新機器を取り入れたセルフエステを併設致しました。
+                その後、1階に最新機器を取り入れたセルフエステを併設致しました。
             </p>
             <p>
                 お客様のニーズに合わせたメニューをご案内致します。
@@ -445,14 +630,28 @@
         </div>
     </div>
 
-    <div class="menu">
+    <div class="menu" id="Menu">
         <h1>Menu</h1>
 
         <div class="menu-container">
             <h2>セルフ超音波</h2>
 
-            <div class="menu-image">
-                <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" alt="">
+            <div class="menu-img">
+                <input type="radio" name="cp_switch1" id="photo5" checked/>
+                <label for="photo5"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" /></label>
+                <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" />
+    
+                <input type="radio" name="cp_switch1" id="photo6"/>
+                <label for="photo6"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
+    
+                <input type="radio" name="cp_switch1" id="photo7" />
+                <label for="photo7"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" />
+    
+                <input type="radio" name="cp_switch1" id="photo8" />
+                <label for="photo8"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" /></label>
+                <img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" />
             </div>
 
             <div class="menu-text">
@@ -482,7 +681,7 @@
         <div class="menu-container">
             <h2>セルフ高周波(RF波)</h2>
 
-            <div class="menu-image">
+            <div class="menu-img">
                 <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu2.jpg?raw=true" alt="">
             </div>
 
@@ -505,7 +704,7 @@
         <div class="menu-container">
             <h2>セルフ脱毛( SHR × LED )</h2>
 
-            <div class="menu-image">
+            <div class="menu-img">
                 <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu3.jpg?raw=true" alt="">
             </div>
 
@@ -527,7 +726,7 @@
         <div class="menu-container">
             <h2>フェイシャルマッサージ</h2>
 
-            <div class="menu-image">
+            <div class="menu-img">
                 <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%91%E6%9E%9A%E7%9B%AE.jpg" alt="">
             </div>
 
@@ -560,7 +759,7 @@
         <div class="menu-container">
             <h2>ホワイトニング</h2>
 
-            <div class="menu-image">
+            <div class="menu-img">
                 <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/5ba946916150526e703af01d46238ae5d6d83203/3_menu5.jpg" alt="">
             </div>
 
@@ -574,7 +773,7 @@
         </div>
     </div>
 
-    <div class="price">
+    <div class="price" id="Price">
         <h1>Price</h1>
 
         <div class="price-table-columns">
@@ -627,7 +826,7 @@
     </div>
 
 
-    <div class="access">
+    <div class="access" id="Access">
         <h1>Access</h1>
         <div class="access-info">
             <p><strong>住所：</strong> 静岡県伊東市大原3-12-9</p>
@@ -637,7 +836,7 @@
             <p><strong>＊</strong>駐車場有</p>
             <div class="social-icons">
             <a href="https://www.instagram.com/ohara_homesalon/" target="_blank" class="instagram" aria-label="Instagram">
-                Instagram <i class="fab fa-instagram"></i>
+                <i class="fab fa-instagram"></i> Instagram
             </a>
             </div>
         </div>
@@ -661,7 +860,32 @@
         </div>
     </div>
 
-
+    <div class="footer">
+        <p class="footer-text">Ohara Home Salon</p>
+    </div>      
   </main>
 </body>
+
+<script>
+    const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+
+// ハンバーガークリックでメニュー開閉
+hamburger.addEventListener("click", function (e) {
+  e.stopPropagation(); // クリックを親に伝えない
+  navMenu.classList.toggle("open");
+});
+
+// メニュー内クリックは閉じない
+//navMenu.addEventListener("click", function (e) {
+//  e.stopPropagation();
+//});
+
+// 外をクリックすると閉じる
+document.addEventListener("click", function () {
+  navMenu.classList.remove("open");
+});
+
+</script>
+
 </html>
