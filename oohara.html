@@ -8,6 +8,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       overscroll-behavior: none; /* オーバースクロール無効化 */
       margin: 0;
@@ -74,7 +78,7 @@
     justify-content: center;
     max-height: 500px; /* メニューの高さ分 */
     padding-top: 8vh;
-    opacity: 0.7;
+    opacity: 0.9;
     }
 
     header .pc {
@@ -136,7 +140,7 @@
         height: 100vh; /* 左側全体に配置 */
         flex: 1;
         min-width: 200px;
-        background: rgb(246, 235, 221);
+        background: #f6ebdd;
       }
 
       header .pc {
@@ -168,6 +172,10 @@
       .slideshow-container {
         height: 100vh !important;
         }
+
+        .home-text {
+        font-size: clamp(3.5rem, 5vw, 3rem) !important; /* デフォルト（PC用） */
+    }
     }
 
     .slideshow-container {
@@ -214,7 +222,10 @@
         right: 20px;
         margin: 0;
         color: rgba(254, 254, 254, 1.0);
-        font-size: clamp(3.5rem, 5vw, 3rem); /* デフォルト（PC用） */
+        font-size: 8vw; /* 横幅の80%くらいに相当（調整可） */
+        max-width: 80%; /* 横幅に収めたいなら */
+        white-space: nowrap; /* 改行しない */
+        text-align: right;
     }
 
 
@@ -240,6 +251,15 @@
 
 
     /*profile*/
+    .profile {
+        background-color: #ebdcce;
+    }
+
+    .profile-container {
+        background-color: #fffaef;
+    }
+
+
     .profile, .profile-container {
         padding: 2rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -265,6 +285,7 @@
     .menu {
         padding: 2rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background-color: #fffdf6;
     }
 
     .menu-container {
@@ -348,7 +369,7 @@
         font-weight: bold;
         font-size: 1.1em;
         padding: 5px;
-        background: #f8f8f8;
+        background: #f8f7ee;
         border-radius: 4px;
     }
 
@@ -401,6 +422,7 @@
     /*access*/
     .access {
         padding: 2rem;
+        background-color: #fafdff;
     }
 
     .access-info {
