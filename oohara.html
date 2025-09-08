@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>レスポンシブサイト</title>
+  <title>大原ホームサロン</title>
   <!-- body フォント: Noto Serif -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -127,6 +127,17 @@
         color: #333; /* 通常の文字色 */
     }
 
+    nav ul li a {
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: #333; /* 通常の文字色 */
+    }
+
+    nav ul li a:hover {
+        color: #745b3e; /* ホバー時の色（ピンク系例） */
+        border-bottom: 2px solid #745b3e; /* 下線でアクセント */
+    }
+
     /* PC表示 (800px以上) の場合 */
     @media (min-width: 800px) {
       body {
@@ -147,16 +158,6 @@
         display: block;
     }
 
-      .pc nav ul li a {
-        text-decoration: none;
-        font-size: 1.5rem;
-        color: #333; /* 通常の文字色 */
-      }
-
-      .pc nav ul li a:hover {
-        color: #745b3e; /* ホバー時の色（ピンク系例） */
-        border-bottom: 2px solid #745b3e; /* 下線でアクセント */
-    }
 
       header .sma {
         display: none;
@@ -364,7 +365,7 @@
         margin: 1rem auto;
     }
 
-    details summary {
+    .menu-container details summary {
         cursor: pointer;
         font-weight: bold;
         font-size: 1.1em;
@@ -373,7 +374,7 @@
         border-radius: 4px;
     }
 
-    details[open] summary {
+    .menu-container details[open] summary {
         background: #e0f0ff; /* 開いた時の色 */
     }
 
@@ -417,6 +418,43 @@
       .item span:last-child {
       color: #EC6798; /* 右側のテキスト（金額） */
       font-size: 1.3rem;
+    }
+
+    .pay {
+        text-align: center; 
+        font-size: 1.4rem;
+        color: #444; 
+        padding: 1rem 0;
+    }
+
+    .pay_info {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .pay_info span {
+      padding:0 20px;
+      font-size: 1.1rem;
+    }
+
+    .pay_info::before,
+    .pay_info::after {
+      content:"";
+      height:1px;
+      width:10%;
+      background:#333;
+    }
+
+    .credit_icon {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .credit_icon img {
+      height: 2rem;
     }
 
     /*access*/
@@ -509,6 +547,74 @@
       z-index: 1;
     }
 
+    .access a {
+        text-decoration: none;
+        color: #333; /* 通常の文字色 */
+    }
+
+    .reserve-button{
+        text-align: center;
+    }
+
+    :root{
+        --cta-bg: linear-gradient(135deg,#ffefe1, #f7e6c0);
+        --cta-bg-hover: linear-gradient(135deg,rgb(229, 206, 166),#f3d9a2);
+        --cta-text: #333;
+        --cta-shadow: 0 10px 24px rgba(0,0,0,.18);
+        --cta-shadow-hover: 0 14px 32px rgba(0,0,0,.22);
+        --cta-ring: 0 0 0 3px rgba(92,192,255,.35);
+    }
+
+.cta-reserve{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  padding: .9rem 1.4rem;
+  border-radius: 9999px;          /* pill */
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: .04em;
+  box-shadow: var(--cta-shadow);
+  transform: translateY(0);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    filter .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cta-reserve:hover{
+  transform: translateY(-2px);
+  background: var(--cta-bg-hover);
+  box-shadow: var(--cta-shadow-hover);
+  filter: brightness(1.01);
+}
+
+.cta-reserve:active{
+  transform: translateY(0);
+  filter: brightness(.98);
+}
+
+.cta-reserve:focus-visible{
+  outline: none;
+  box-shadow: var(--cta-shadow-hover), var(--cta-ring);
+}
+
+/* テキストとアイコン */
+.cta-text{ font-size: clamp(1rem, 2.2vw, 1.05rem); }
+.cta-icon{
+  width: 1.2em;
+  height: 1.2em;
+  flex: 0 0 auto;
+  transition: transform .18s ease;
+}
+.cta-reserve:hover .cta-icon{ transform: translateX(2px); }
+
+
     .footer {
   display: flex;
   justify-content: center; /* 中央寄せ */
@@ -595,8 +701,8 @@
     <div class="slideshow-container">
         <img src="https://github.com/niku-tori/oohara_homepage/blob/main/2_home1.png?raw=true" alt="home1">
         <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/b6baad5b9b5dea5dec1455fb9b82ff19df34dafa/2_home2.jpg" alt="home2">
-        <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/0f28abee2446343dbdfecc76cf22f0ceea596517/2_home3.jpg" alt="home3">
-        <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/0f28abee2446343dbdfecc76cf22f0ceea596517/2_home4.jpg" alt="home4">
+        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/2_home3.jpg?raw=true" alt="home3">
+        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/2_home4%20(1).jpg?raw=true" alt="home4">
         <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/4c17ba5037ddffdbad8f5d26ec99f239486d8999/2_home7.jpg" alt="home5">
         <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/2898700edc38c9c3b1b2f3da78ca746a4a432ceb/2_home5.jpg" alt="home6">
         <p class="home-text">Ohara Home Salon</p>
@@ -845,6 +951,43 @@
                 <div class="item"><span>５回回数券(+一回無料)</span><span>￥16500</span></div>
             </div>
         </div>
+
+        <div class="pay">
+            <details>
+                <summary>
+                    ご利用可能な支払い方法
+                </summary>
+                <h3 class="pay_info"><span>クレジットカード決済</span></h3>
+                <div class="credit_icon">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/8d276deaad893e59f6207462ae21332a33bb18e2.png" alt="JCB">
+                    <img src="https://faq.airpayment.jp/hc/article_attachments/11725575695769" alt="VISA">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/8e29757faf8d84aef5487a00405801fc68e82f7f.png" alt="MasterCard">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/78c7ddb491d416672ef5bb72b2851002798037cd.png" alt="American Express">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/730f0f6b1a881c07b6539bb9b5886d8c8d625807.png" alt="Diners Club">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/498ce93ca6ff4e67903ef063d0f0323128da491d.png" alt="Discover">
+                </div>
+
+                <h3 class="pay_info"><span>QRコード決済</span></h3>
+                <div class="credit_icon">
+                    <img src="https://faq.mp.airregi.jp/hc/article_attachments/25215041341337" alt="R Pay">
+                    <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873952980249" alt="au PAY">
+                    <img src="https://faq.mp.airregi.jp/hc/article_attachments/24873985224345" alt="PayPay">
+                    <img src="https://service.smt.docomo.ne.jp/keitai_payment/corporation/logo_share/images/share/dbarai_shop_acceptance.jpg" alt="d払い">
+                    <img src="https://www.merpay.com/merchant/assets/merpay_logo.png" alt="メル Pay">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/f976e3ee66376139604120fc65d2a68046794c95.png" alt="Union pay">
+                </div>
+
+                <h3 class="pay_info"><span>電子マネー決済</span></h3>
+                <div class="credit_icon">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/bf01a08de20f9dc7b7ee2362c6c7518f4bad14a9.png" alt="ID">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/4835ddf3629f323941a265a45d0c6f794d65931b.png" alt="Quick pay">
+                    <img src="https://theme.zdassets.com/theme_assets/760728/c5c0768b2f13823e95fbea46a317a2c51d56ca09.png" alt="apple pay">
+                    <img src="https://www.keiseistore.co.jp/wp-content/uploads/2022/05/suica_pasmo_card.jpg" alt="suica">
+                    <img src="https://www.aeon.co.jp/business/member/download/img/waon.png" alt="waon">
+                    <img src="https://www.aeon.co.jp/business/member/download/img/nanaco.png" alt="nanaco">
+                </div>
+            </details>
+        </div>
     </div>
 
 
@@ -879,6 +1022,17 @@
             <input type="radio" name="cp_switch" id="photo4" checked/>
             <label for="photo4"><img src="https://icooon-mono.com/i/icon_10984/icon_109841_64.png"/></label>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3269.6633511173627!2d139.10136486145848!3d34.96504552271357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019c30bc6da1bed%3A0x6def5168095c7c71!2z5aSn5Y6f44Ob44O844Og44K144Ot44OzMUY!5e0!3m2!1sja!2sjp!4v1751524894738!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <div class="reserve-button">
+            <!-- HTML：設置したい場所に貼り付け -->
+            <a href="https://yoyaku.example.com" class="cta-reserve" target="_blank" rel="noopener noreferrer" aria-label="予約ページを新しいタブで開く">
+            <span class="cta-text">Reserve</span>
+            <!-- シンプルな矢印アイコン（SVG） -->
+            <svg class="cta-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h12m0 0-5-5m5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </a>
         </div>
     </div>
 
