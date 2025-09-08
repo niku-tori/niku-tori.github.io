@@ -295,61 +295,73 @@
     }
 
     .menu-img {
-        width: 100%;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        padding-top: 400px;
-        margin: 1rem 0;
+    display: flex;
+    flex-direction: column-reverse; /* 縦並び */
+    align-items: center;    /* 中央寄せ */
+    gap: 1rem;              /* 画像とボタンの間隔 */
+  }
+
+  .viewer {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    aspect-ratio: 1/1;
+  }
+
+  /* 画像ビューア */
+  .viewer img {
+    display: none;
+    width: 100%;
+    border-radius: 20% 20% 3% 3%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+    /* ▼ 1つ目のスライダー専用 */
+    .menu-container:nth-of-type(1) .menu-img .buttons:has(#photo5:checked) ~ .viewer img:nth-child(1),
+    .menu-container:nth-of-type(1) .menu-img .buttons:has(#photo6:checked) ~ .viewer img:nth-child(2),
+    .menu-container:nth-of-type(1) .menu-img .buttons:has(#photo7:checked) ~ .viewer img:nth-child(3),
+    .menu-container:nth-of-type(1) .menu-img .buttons:has(#photo8:checked) ~ .viewer img:nth-child(4),
+    .menu-container:nth-of-type(2) .menu-img .buttons:has(#photo9:checked) ~ .viewer img:nth-child(1),
+    .menu-container:nth-of-type(2) .menu-img .buttons:has(#photo10:checked) ~ .viewer img:nth-child(2),
+    .menu-container:nth-of-type(3) .menu-img .viewer img,
+    .menu-container:nth-of-type(4) .menu-img .buttons:has(#photo11:checked) ~ .viewer img:nth-child(1),
+    .menu-container:nth-of-type(4) .menu-img .buttons:has(#photo12:checked) ~ .viewer img:nth-child(2),
+    .menu-container:nth-of-type(5) .menu-img .buttons:has(#photo13:checked) ~ .viewer img:nth-child(1),
+    .menu-container:nth-of-type(5) .menu-img .buttons:has(#photo14:checked) ~ .viewer img:nth-child(2) {
+        display: block;
     }
 
-    .menu-img > img {
-        position: absolute;
-        right: 0;
-        left: 0;
-        margin: 0 auto;
-        top: 0;
-        width: 100%;
-        max-width: 400px;
-        border-radius: 20% 20% 3% 3%;
-        transition: all 0.5s;
-    }
+  /* ボタン（横並び） */
+  .buttons {
+    display: flex;
+    gap: 1rem;
+  }
 
-    /* サムネイル */
-    .menu-img label {
-      margin: 5px;
-      border: 2px solid #ffffff;
-      display: inline-block;
-      cursor: pointer;
-      transition: all 0.5s ease;
-      opacity: 0.6;
-      border-radius: 20% 20% 3% 3%;
-      padding: 0;
-    }
-    .menu-img label:hover {
+  .buttons input[type="radio"] {
+    display: none; /* 本体は非表示にする */
+  }
+  
+  .buttons label {
+    margin: 0.5px;
+    border-radius: 20% 20% 3% 3%;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .buttons label:hover {
       opacity: 0.9;
     }
-    .menu-img label img {
+
+  .buttons label img {
       display: block;
       width: 40px;
       border-radius: 20% 20% 3% 3%;
     }
 
-    .menu-img input[name='cp_switch1'] {
-      display: none;
-    }
-
-    .menu-img input[name='cp_switch1']:checked + label {
-      border: 2px solid #FF7043;
-      opacity: 1;
-    }
-    .menu-img input[name='cp_switch1'] ~ img {
-      opacity: 0;
-    }
-
-    .menu-img input[name='cp_switch1']:checked + label + img {
-      opacity: 1;
-    }
+  .buttons input[type="radio"]:checked + label {
+    border: 2px solid #FF7043;
+    opacity: 1;
+  }
 
 
 
@@ -765,21 +777,30 @@
             <h2>セルフ超音波</h2>
 
             <div class="menu-img">
-                <input type="radio" name="cp_switch1" id="photo5" checked/>
-                <label for="photo5"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" /></label>
-                <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" />
-    
-                <input type="radio" name="cp_switch1" id="photo6"/>
-                <label for="photo6"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
-                <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
-    
-                <input type="radio" name="cp_switch1" id="photo7" />
-                <label for="photo7"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" /></label>
-                <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" />
-    
-                <input type="radio" name="cp_switch1" id="photo8" />
-                <label for="photo8"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" /></label>
-                <img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" />
+                <div class="menu-img">
+                    <!-- ラジオボタン -->
+                    <div class="buttons">
+                        <input type="radio" name="cp_switch1" id="photo5" checked/>
+                        <label for="photo5"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" /></label>
+                        
+                        <input type="radio" name="cp_switch1" id="photo6"/>
+                        <label for="photo6"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                        
+                        <input type="radio" name="cp_switch1" id="photo7" />
+                        <label for="photo7"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                        
+                        <input type="radio" name="cp_switch1" id="photo8" />
+                        <label for="photo8"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" /></label>
+                    </div>
+        
+                    <!-- 画像ビューア -->
+                    <div class="viewer">
+                        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" />
+                        <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
+                        <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" />
+                        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" />
+                    </div>
+                </div>
             </div>
 
             <div class="menu-text">
@@ -810,7 +831,20 @@
             <h2>セルフ高周波(RF波)</h2>
 
             <div class="menu-img">
-                <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu2.jpg?raw=true" alt="">
+                <!-- ラジオボタン -->
+                <div class="buttons">
+                    <input type="radio" name="cp_switch2" id="photo9" checked/>
+                    <label for="photo9"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu2.jpg?raw=true" /></label>
+                    
+                    <input type="radio" name="cp_switch2" id="photo10"/>
+                    <label for="photo10"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/39c7188db3915e77fccd13535310454772229627/%E9%AB%98%E5%91%A8%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                </div>
+    
+                <!-- 画像ビューア -->
+                <div class="viewer">
+                    <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu2.jpg?raw=true" />
+                    <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/39c7188db3915e77fccd13535310454772229627/%E9%AB%98%E5%91%A8%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
+                </div>
             </div>
 
             <div class="menu-text">
@@ -833,7 +867,9 @@
             <h2>セルフ脱毛( SHR × LED )</h2>
 
             <div class="menu-img">
-                <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu3.jpg?raw=true" alt="">
+                <div class="viewer">
+                    <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu3.jpg?raw=true" />
+                </div>
             </div>
 
             <div class="menu-text">
@@ -855,7 +891,20 @@
             <h2>フェイシャルマッサージ</h2>
 
             <div class="menu-img">
-                <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%91%E6%9E%9A%E7%9B%AE.jpg" alt="">
+                <!-- ラジオボタン -->
+                <div class="buttons">
+                    <input type="radio" name="cp_switch3" id="photo11" checked/>
+                    <label for="photo11"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%91%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                    
+                    <input type="radio" name="cp_switch3" id="photo12"/>
+                    <label for="photo12"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                </div>
+    
+                <!-- 画像ビューア -->
+                <div class="viewer">
+                    <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%91%E6%9E%9A%E7%9B%AE.jpg" />
+                    <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/aad42319b4dc2a821811d5ab0f274276aad41c3d/%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%A3%E3%83%AB%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
+                </div>
             </div>
 
             <div class="menu-text">
@@ -888,7 +937,20 @@
             <h2>ホワイトニング</h2>
 
             <div class="menu-img">
-                <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/5ba946916150526e703af01d46238ae5d6d83203/3_menu5.jpg" alt="">
+                <!-- ラジオボタン -->
+                <div class="buttons">
+                    <input type="radio" name="cp_switch4" id="photo13" checked/>
+                    <label for="photo13"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/5ba946916150526e703af01d46238ae5d6d83203/3_menu5.jpg" /></label>
+                    
+                    <input type="radio" name="cp_switch4" id="photo14"/>
+                    <label for="photo14"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/4df77216eac2422617b26a210c225eaa626a74af/%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%83%8B%E3%83%B3%E3%82%AF%E3%82%99%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                </div>
+    
+                <!-- 画像ビューア -->
+                <div class="viewer">
+                    <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/5ba946916150526e703af01d46238ae5d6d83203/3_menu5.jpg" />
+                    <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/4df77216eac2422617b26a210c225eaa626a74af/%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%83%8B%E3%83%B3%E3%82%AF%E3%82%99%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
+                </div>
             </div>
 
             <div class="menu-text">
@@ -955,7 +1017,7 @@
         <div class="pay">
             <details>
                 <summary>
-                    ご利用可能な支払い方法
+                    ご利用可能なお支払い方法
                 </summary>
                 <h3 class="pay_info"><span>クレジットカード決済</span></h3>
                 <div class="credit_icon">
@@ -1026,7 +1088,7 @@
 
         <div class="reserve-button">
             <!-- HTML：設置したい場所に貼り付け -->
-            <a href="https://yoyaku.example.com" class="cta-reserve" target="_blank" rel="noopener noreferrer" aria-label="予約ページを新しいタブで開く">
+            <a href="https://beauty.hotpepper.jp/kr/slnH000498972/" class="cta-reserve" target="_blank" rel="noopener noreferrer" aria-label="予約ページを新しいタブで開く">
             <span class="cta-text">Reserve</span>
             <!-- シンプルな矢印アイコン（SVG） -->
             <svg class="cta-icon" viewBox="0 0 24 24" aria-hidden="true">
