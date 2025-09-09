@@ -299,6 +299,7 @@
     flex-direction: column-reverse; /* 縦並び */
     align-items: center;    /* 中央寄せ */
     gap: 1rem;              /* 画像とボタンの間隔 */
+    margin: 1rem 0;
   }
 
   .viewer {
@@ -377,18 +378,64 @@
         margin: 1rem auto;
     }
 
-    .menu-container details summary {
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 1.1em;
-        padding: 5px;
-        background: #f8f7ee;
-        border-radius: 4px;
-    }
+    .menu-container details {
+    margin: 0.5em 0; /* 各項目の余白 */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden; /* はみ出しを防ぐ */
+    transition: box-shadow 0.3s;
+}
 
-    .menu-container details[open] summary {
-        background: #e0f0ff; /* 開いた時の色 */
-    }
+.menu-container details:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.menu-container details summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px 12px;
+    background: #f8f7ee;
+    border-radius: 6px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* タイトルとアイコンを左右に分ける */
+    transition: background 0.3s;
+}
+
+/* 開いたときの背景色 */
+.menu-container details[open] summary {
+    background: #e0f0ff;
+}
+
+/* デフォルトの三角アイコンを消して独自に矢印を作る */
+.menu-container details summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-container details summary::after {
+    content: "▼";
+    font-size: 0.9em;
+    transition: transform 0.3s;
+    color: #666;
+}
+
+/* 開いたときに矢印を回転 */
+.menu-container details[open] summary::after {
+    transform: rotate(-180deg);
+}
+
+/* コンテンツ部分 */
+.menu-container details p,
+.menu-container details div {
+    padding: 10px 12px;
+    background: #fffdf6;
+    line-height: 1.6;
+    font-size: 0.95em;
+    margin: 3px 0;
+}
+
 
     /*price*/
     .price {
@@ -484,6 +531,8 @@
         margin: 0.5rem 0rem;
     }
 
+
+
     .access_img {
       max-width: 400px;
       margin: 2rem auto;
@@ -563,6 +612,32 @@
         text-decoration: none;
         color: #333; /* 通常の文字色 */
     }
+
+    .social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-icons a.instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 9999px; /* 丸みを最大化 */
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, 
+              #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-icons a.instagram:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
     .reserve-button{
         text-align: center;
@@ -777,29 +852,27 @@
             <h2>セルフ超音波</h2>
 
             <div class="menu-img">
-                <div class="menu-img">
-                    <!-- ラジオボタン -->
-                    <div class="buttons">
-                        <input type="radio" name="cp_switch1" id="photo5" checked/>
-                        <label for="photo5"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" /></label>
-                        
-                        <input type="radio" name="cp_switch1" id="photo6"/>
-                        <label for="photo6"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
-                        
-                        <input type="radio" name="cp_switch1" id="photo7" />
-                        <label for="photo7"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" /></label>
-                        
-                        <input type="radio" name="cp_switch1" id="photo8" />
-                        <label for="photo8"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" /></label>
-                    </div>
-        
-                    <!-- 画像ビューア -->
-                    <div class="viewer">
-                        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" />
-                        <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
-                        <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" />
-                        <img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" />
-                    </div>
+                <!-- ラジオボタン -->
+                <div class="buttons">
+                    <input type="radio" name="cp_switch1" id="photo5" checked/>
+                    <label for="photo5"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" /></label>
+                    
+                    <input type="radio" name="cp_switch1" id="photo6"/>
+                    <label for="photo6"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                    
+                    <input type="radio" name="cp_switch1" id="photo7" />
+                    <label for="photo7"><img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" /></label>
+                    
+                    <input type="radio" name="cp_switch1" id="photo8" />
+                    <label for="photo8"><img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" /></label>
+                </div>
+    
+                <!-- 画像ビューア -->
+                <div class="viewer">
+                    <img src="https://github.com/niku-tori/oohara_homepage/blob/main/3_menu1.jpg?raw=true" />
+                    <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%92%E6%9E%9A%E7%9B%AE.jpg" />
+                    <img src="https://raw.githubusercontent.com/niku-tori/oohara_homepage/832479afdf36fe72a75ae9a902375d8cdaf90796/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%93%E6%9E%9A%E7%9B%AE.jpg" />
+                    <img src="https://github.com/niku-tori/oohara_homepage/blob/main/%E8%B6%85%E9%9F%B3%E6%B3%A2%E3%81%AE%EF%BC%94%E6%9E%9A%E7%9B%AE.jpg?raw=true" />
                 </div>
             </div>
 
@@ -908,14 +981,16 @@
             </div>
 
             <div class="menu-text">
+              <details>
+                <summary>【フェイシャルマッサージ】</summary>
                 <p>デコルテからフェイシャルを熟練のハンドマッサージで<br>リラクゼーションとともに美肌へと導く極上エステ。</p>
 
                 <p><strong>クレンジング：</strong><br>毛穴の汚れを丁寧に落とします。</p>
                 <p><strong>マッサージ：</strong><br>デコルテから顔へリンパを流しリフトアップ。</p>
                 <p><strong>ハーブピーリング：</strong><br>ハーブの粒が古い角質や毛穴の汚れを取り除きます。</p>
                 <p><strong>ＥＭＳ：</strong><br>微弱電流で筋肉を刺激し、美容成分を肌の隅々まで広げます。</p>
-
-                <details>
+                </details>
+              <details>
                     <summary>【スタンダードコース】</summary>
                     <p><strong>イオン導入：</strong><br>電気イオンが毛穴を広げ、美容成分を肌の奥へと届けます。</p>
                 </details>    
@@ -994,7 +1069,7 @@
                 <div class="subcategory">【ボディ】</div>
                 <div class="item"><span>スタンダード1～2部位(20分)</span><span>￥5500</span></div>
                 
-                <div style="margin-top: 50px;" class="section-title">セルフ脱毛</div>
+                <div class="section-title">セルフ脱毛</div>
                 <div class="item"><span>気になる部位15分(使い方説明込み)</span><span>￥1200</span></div>
                 <div class="item"><span>回数券(5回)</span><span>￥5000</span></div>
             </div>
@@ -1062,9 +1137,9 @@
             <p><strong>定休日：</strong>不定休（完全予約制）</p>
             <p><strong>＊</strong>駐車場有</p>
             <div class="social-icons">
-            <a href="https://www.instagram.com/ohara_homesalon/" target="_blank" class="instagram" aria-label="Instagram">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
+              <a href="https://www.instagram.com/ohara_homesalon/" target="_blank" class="instagram" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i> Instagram
+              </a>
             </div>
         </div>
 
@@ -1085,6 +1160,7 @@
             <label for="photo4"><img src="https://icooon-mono.com/i/icon_10984/icon_109841_64.png"/></label>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3269.6633511173627!2d139.10136486145848!3d34.96504552271357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019c30bc6da1bed%3A0x6def5168095c7c71!2z5aSn5Y6f44Ob44O844Og44K144Ot44OzMUY!5e0!3m2!1sja!2sjp!4v1751524894738!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
+
 
         <div class="reserve-button">
             <!-- HTML：設置したい場所に貼り付け -->
