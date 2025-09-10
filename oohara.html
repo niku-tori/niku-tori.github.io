@@ -183,6 +183,10 @@
       .slideshow-container {
         height: 85vh !important;
       }
+
+      .profile-image p {
+      font-size: 15px;
+    }
     }
 
     .slideshow-container {
@@ -278,14 +282,20 @@
 
     .profile-image {
         width: 100%;
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profile-image p {
+      margin: 6px 0;
     }
 
     .profile-image img {
         width: 100%;
-        max-width: 150px;
+        max-width: 75px;
         border-radius: 50%;
-        box-shadow: 20px -10px 0px 10px rgb(199 217 221), -18px 6px 0px 10px rgb(190 233 242);
+        /*box-shadow: 20px -10px 0px 10px rgb(199 217 221), -18px 6px 0px 10px rgb(190 233 242);*/
     }
 
     /*menu*/
@@ -829,14 +839,16 @@
 
         <div class="profile-container">
             <div class="profile-image">
+                <div>
+                  <p>
+                    寺島亜佐子
+                </p>
+                <p>
+                    エステティシャン歴25年
+                </p>
+                </div>
                 <img src="https://github.com/niku-tori/oohara_homepage/blob/main/profile2.png?raw=true" alt="home6">
             </div>
-            <p>
-                寺島亜佐子
-            </p>
-            <p>
-                エステティシャン歴25年
-            </p>
             <p>
                 30歳を機にメナードフェイシャルサロンにて、美容の基礎知識を学びながらエステセラピストの資格を取得。<br>
                 たくさんのお客様を担当させて頂きました。
